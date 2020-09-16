@@ -36,7 +36,7 @@ class SLL<E> {
                 ret += tmp + "";
             }
         } else
-            ret = "Prazna lista!!!";
+            ret = "The list is empty!!!";
         return ret;
     }
 
@@ -65,7 +65,7 @@ public class Main {
         SLL<Integer> list=new SLL<Integer>();
         String str = new Scanner(System.in).nextLine();
         String[] words;
-        words = str.substring(1, str.length() - 1).split(" ");
+        words = str.split(" ");
 
         for (int i = 0; i < words.length; i++) {
 
