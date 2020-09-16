@@ -11,7 +11,7 @@ class Box{
         this.depth=depth;
     }
 
-    int volume(){
+    int volume(int height,int width,int depth){
         return height*width*depth;
     }
 }
