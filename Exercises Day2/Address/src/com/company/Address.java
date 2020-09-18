@@ -14,16 +14,12 @@ class Address {
         this.zipCode = zipCode;
     }
 
+    @Override
     public String toString() {
         return this.street + " " + this.streetNumber + " " + this.city + " " + this.zipCode;
     }
 
-    void valid(int zipCode) throws InvalidZipCode {
-        int length = String.valueOf(zipCode).length();
-        if (length != 5 && length != 9) {
-            throw new InvalidZipCode("The zipCode is invalid");
-        }
-    }
+
 }
 
 
