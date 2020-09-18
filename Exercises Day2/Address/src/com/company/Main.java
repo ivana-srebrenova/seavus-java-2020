@@ -12,19 +12,14 @@ public class Main {
         String city = sc.next();
         int zipCode = sc.nextInt();
 
-
         try {
-            int length = String.valueOf(zipCode).length();
-            if (length != 5 && length != 9) {
-                throw new InvalidZipCode("The zipCode is invalid");
-            }
             Address a = new Address(street, streetNumber, city, zipCode);
             System.out.println(a.toString());
-
         } catch (InvalidZipCode e) {
-            System.out.println("The zipCode is invalid");
+            System.out.println("The Zip code is invalid");
 
         }
 
     }
+
 }
