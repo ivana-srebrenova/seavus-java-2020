@@ -5,9 +5,9 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
-public class SevenZipArchives implements Archiver {
+public class SevenZipArchiver implements Archiver {
 
-    public SevenZipArchives() {
+    public SevenZipArchiver() {
         super();
     }
 

@@ -3,8 +3,8 @@ import java.io.IOException;
 
 import net.lingala.zip4j.ZipFile;
 
-public class ZipArchives implements Archiver {
-    public ZipArchives() {
+public class ZipArchiver implements Archiver {
+    public ZipArchiver() {
         super();
     }
 

@@ -12,7 +12,7 @@ public class Application {
 
         if (algorithm.equals("7z")) {
 
-            SevenZipArchives sevenZip = new SevenZipArchives();
+            SevenZipArchiver sevenZip = new SevenZipArchiver();
             File sevenZipArchive = new File("archive.7z");
             sevenZip.archive(f, sevenZipArchive);
             System.out.println("The 'archive.7z' has been created");
@@ -20,7 +20,7 @@ public class Application {
         }
         if (algorithm.equals("zip")) {
 
-            ZipArchives zip = new ZipArchives();
+            ZipArchiver zip = new ZipArchiver();
             File zipArchive = new File("archive.zip");
             zip.archive(f, zipArchive);
             System.out.println("The 'archive.zip' is created");
