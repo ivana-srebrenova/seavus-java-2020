@@ -35,7 +35,7 @@ public class WordSorter {
 
         }
         if (sc.equals("Descending order")) {
-            Collections.sort(list, new DescendingLengthStringComparator().reversed());
+            Collections.sort(list, new DescendingLengthStringComparator());
             System.out.println(list);
 
         }
