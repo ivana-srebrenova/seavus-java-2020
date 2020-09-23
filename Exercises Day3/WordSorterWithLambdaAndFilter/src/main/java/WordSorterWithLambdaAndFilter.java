@@ -25,32 +25,21 @@ public class WordSorterWithLambdaAndFilter {
         int max = new Scanner(System.in).nextInt();
         String input = new Scanner(System.in).nextLine();
 
-        List<String> uniqueWords = list.stream()
-                .distinct()
-                .filter(word -> word.length() >= min).filter(word -> word.length() <= max).collect(Collectors.toList());
+
+        List<String> uniqueWords;
 
 
-        if (min == 0) {
+        uniqueWords = max == 0 ? list.stream().distinct().filter(word -> word.length() >= min).collect(Collectors.toList()) : list.stream().filter(word -> word.length() >= min).filter(word -> word.length() <= max)
+                .collect(Collectors.toList());
 
-            uniqueWords = list.stream()
-                    .distinct().filter(word -> word.length() <= max)
-                    .collect(Collectors.toList());
 
-        }
-        if (max == 0) {
-
-            uniqueWords = list.stream().
-                    distinct().filter(word -> word.length() >= min)
-                    .collect(Collectors.toList());
-
-        }
         if (input.equals("Ascending order")) {
-            Collections.sort(uniqueWords, Comparator.comparing(word -> word.length()));
+          Collections.sort(uniqueWords, Comparator.comparing(word -> word.length()));
         } else if (input.equals("Descending order")) {
-            Collections.sort(uniqueWords, Collections.reverseOrder(Comparator.comparing(word -> word.length())));
-        }
-
-        uniqueWords.forEach(System.out::println);
+          Collections.sort(uniqueWords, (word1, word2) -> word2.length() - word1.length());
     }
-}
 
+
+            uniqueWords.forEach(System.out::println);
+        }
+    }
