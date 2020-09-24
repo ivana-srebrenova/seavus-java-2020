@@ -32,8 +32,8 @@ public class NotesController {
 
 
     @GetMapping("/api/notes/{id}")
-    public Notes findNotes(@PathVariable Long id) {
-        return notesService.findNotes(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public Notes findNote(@PathVariable Long id) {
+        return notesService.findNote(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/api/notes")
@@ -42,8 +42,8 @@ public class NotesController {
     }
 
     @DeleteMapping("/api/notes/{id}")
-    public void deleteNotes(@PathVariable Long id) {
-        notesService.deleteNotes(id);
+    public void deleteById(@PathVariable Long id) {
+        notesService.deleteById(id);
     }
 
     @PutMapping("/api/notes/{id}")

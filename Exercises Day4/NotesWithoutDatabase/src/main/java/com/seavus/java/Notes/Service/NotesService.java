@@ -34,8 +34,8 @@ public class NotesService {
             }
     }
 
-    public Optional<Notes> findNotes(Long id) {
-        return notesRepository.findbyId(id);
+    public Optional<Notes> findNote(Long id) {
+        return notesRepository.findById(id);
     }
 
     public List<Notes> findNotes() {
@@ -43,8 +43,8 @@ public class NotesService {
 
     }
 
-    public void deleteNotes(Long id) {
-        notesRepository.deleteNotes(id);
+    public void deleteById(Long id) {
+        notesRepository.deleteById(id);
     }
 
 

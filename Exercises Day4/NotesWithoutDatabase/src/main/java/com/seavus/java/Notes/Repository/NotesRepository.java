@@ -18,7 +18,7 @@ public class NotesRepository {
         notes.add(note);
     }
 
-    public Optional<Notes> findbyId(Long id) {
+    public Optional<Notes> findById(Long id) {
         return notes.stream().filter(note -> note.getId().equals(id)).findFirst();
     }
 
@@ -26,8 +26,8 @@ public class NotesRepository {
         return notes;
     }
 
-    public void deleteNotes(Long id) {
-        notes.removeIf(n -> n.getId().equals(id));
+    public void deleteById(Long id) {
+        notes.removeIf(note -> note.getId().equals(id));
     }
 
 }
