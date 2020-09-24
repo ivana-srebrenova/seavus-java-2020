@@ -13,7 +13,7 @@ public class CalculatorController {
         if (operator.equals("+")) {
             result = firstOperand + secondOperand;
         }
-        if (operator.equals("-")) {
+        else if (operator.equals("-")) {
             result = firstOperand - secondOperand;
         }
         return result;
