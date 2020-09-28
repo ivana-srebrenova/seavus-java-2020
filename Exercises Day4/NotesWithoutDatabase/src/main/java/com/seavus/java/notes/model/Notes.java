@@ -1,4 +1,4 @@
-package com.seavus.java.Notes.Model;
+package com.seavus.java.notes.model;
 
 public class Notes {
     private Long id;
@@ -56,7 +56,7 @@ public class Notes {
 
     @Override
     public String toString() {
-        return "Notes{" +
+        return "notes{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +

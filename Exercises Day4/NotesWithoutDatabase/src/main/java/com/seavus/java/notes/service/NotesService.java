@@ -1,10 +1,11 @@
-package com.seavus.java.Notes.Service;
+package com.seavus.java.notes.service;
 
-import com.seavus.java.Notes.Model.Notes;
-import com.seavus.java.Notes.Repository.NotesRepository;
+import com.seavus.java.notes.model.Notes;
+import com.seavus.java.notes.repository.NotesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,20 +19,17 @@ public class NotesService {
         this.notesRepository = notesRepository;
     }
 
-    public void createNotes(String title, String content) {
+    public void createNote(String title, String content) {
 
         Notes notes = new Notes(title, content);
         notesRepository.save(notes);
 
     }
 
-    public void updateNotes(Notes notes, Long id) {
-        List<Notes> note = notesRepository.findAll();
-        for (Notes n : note)
-            if (n.getId().equals(id)) {
-                n.setContent(notes.getContent());
-                n.setTitle(notes.getTitle());
-            }
+    public void updateNote(Notes notes, Long id) throws Exception {
+        Notes note=notesRepository.findById(id).orElseThrow(()->new Exception());
+        note.setContent(notes.getContent());
+        note.setTitle(notes.getTitle());
     }
 
     public Optional<Notes> findNote(Long id) {

@@ -1,12 +1,13 @@
-package com.seavus.java.Notes.api;
+package com.seavus.java.notes.api;
 
-import com.seavus.java.Notes.Model.Notes;
-import com.seavus.java.Notes.Service.NotesService;
+import com.seavus.java.notes.model.Notes;
+import com.seavus.java.notes.service.NotesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -21,8 +22,8 @@ public class NotesController {
     }
 
     @PostMapping("/api/notes")
-    public void createNotes(@RequestBody CreateNotesRequest request) {
-        notesService.createNotes(request.title, request.content);
+    public void createNote(@RequestBody CreateNotesRequest request) {
+        notesService.createNote(request.title, request.content);
     }
 
     public static class CreateNotesRequest {
@@ -47,8 +48,8 @@ public class NotesController {
     }
 
     @PutMapping("/api/notes/{id}")
-    public void updateNotes(@RequestBody Notes note, @PathVariable Long id) {
-        notesService.updateNotes(note, id);
+    public void updateNote(@RequestBody Notes note, @PathVariable Long id) throws Exception {
+        notesService.updateNote(note, id);
 
 
     }

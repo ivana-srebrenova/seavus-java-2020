@@ -1,6 +1,6 @@
-package com.seavus.java.Notes.Repository;
+package com.seavus.java.notes.repository;
 
-import com.seavus.java.Notes.Model.Notes;
+import com.seavus.java.notes.model.Notes;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
