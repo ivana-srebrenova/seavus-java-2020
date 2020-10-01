@@ -17,14 +17,14 @@ public class Tag {
     private User user;
 
     @ManyToMany(mappedBy = "tags")
-    private List<Notes> notes;
+    private List<Note> notes;
 
 
-    public List<Notes> getNotes() {
+    public List<Note> getNotes() {
         return notes;
     }
 
-    public void setNotes(List<Notes> notes) {
+    public void setNotes(List<Note> notes) {
         this.notes = notes;
     }
 

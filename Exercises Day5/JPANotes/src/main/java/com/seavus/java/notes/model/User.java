@@ -19,7 +19,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user")
-    private List<Notes> notes;
+    private List<Note> notes;
 
 
     @OneToMany
@@ -54,7 +54,7 @@ public class User {
     }
 
     @JsonIgnore
-    public List<Notes> getNotes() {
+    public List<Note> getNotes() {
         return notes;
     }
 

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Notes {
+public class Note {
     @Id
     @GeneratedValue
     private Long id;
@@ -28,22 +28,23 @@ public class Notes {
         this.tags = tags;
     }
 
-    public Notes() {
+    public Note() {
     }
 
-    public Notes(String title, String content, User user) {
+    public Note(String title, String content, User user, List<Tag> tags) {
         this.title = title;
         this.content = content;
         this.user = user;
+        this.tags=tags;
     }
 
 
-    public Notes(Long id) {
+    public Note(Long id) {
         this.id = id;
     }
 
 
-    public Notes(String title) {
+    public Note(String title) {
         this.title = title;
     }
 

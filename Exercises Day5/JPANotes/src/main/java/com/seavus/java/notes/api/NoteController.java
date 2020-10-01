@@ -1,8 +1,8 @@
 package com.seavus.java.notes.api;
 
-import com.seavus.java.notes.model.Notes;
+import com.seavus.java.notes.model.Note;
 import com.seavus.java.notes.model.User;
-import com.seavus.java.notes.service.NotesService;
+import com.seavus.java.notes.service.NoteService;
 import com.seavus.java.notes.security.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,20 +13,20 @@ import java.util.List;
 
 
 @RestController
-public class NotesController {
+public class NoteController {
 
-    private NotesService notesService;
+    private NoteService noteService;
     private SecurityService securityService;
 
     @Autowired
-    public NotesController(NotesService notesService, SecurityService securityService) {
-        this.notesService = notesService;
+    public NoteController(NoteService noteService, SecurityService securityService) {
+        this.noteService = noteService;
         this.securityService = securityService;
     }
 
     @PostMapping("/api/notes")
-    public Notes createNote(@RequestBody CreateNotesRequest request) {
-        return notesService.createNote(request.title, request.content);
+    public Note createNote(@RequestBody CreateNotesRequest request) {
+        return noteService.createNote(request.title, request.content);
     }
 
     public static class CreateNotesRequest {
@@ -36,30 +36,30 @@ public class NotesController {
 
 
     @GetMapping("/api/notes/{id}")
-    public Notes findNote(@PathVariable Long id) {
-        return notesService.findNote(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public Note findNote(@PathVariable Long id) {
+        return noteService.findNote(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/api/notes")
-    public List<Notes> findNotes() {
+    public List<Note> findNotes() {
         User user = securityService.getAuthenticatedUser();
-        return notesService.findNotes(user);
+        return noteService.findNotes(user);
     }
 
     @DeleteMapping("/api/notes/{id}")
     public void deleteById(@PathVariable Long id) {
-        notesService.deleteById(id);
+        noteService.deleteById(id);
     }
 
     @PutMapping("/api/notes/{id}")
-    public void updateNote(@RequestBody Notes note, @PathVariable Long id) throws Exception {
-        notesService.updateNote(note, id);
+    public void updateNote(@RequestBody Note note, @PathVariable Long id) throws Exception {
+        noteService.updateNote(note, id);
 
     }
 
 
     @GetMapping("/api/tags/{id}/notes")
-    public List<Notes> findNotesByTagId(@PathVariable Long id) {
-        return notesService.findNotesByTagId(id);
+    public List<Note> findNotesByTagId(@PathVariable Long id) {
+        return noteService.findNotesByTagId(id);
     }
 }
