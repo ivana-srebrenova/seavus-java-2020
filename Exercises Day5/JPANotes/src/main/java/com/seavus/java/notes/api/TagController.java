@@ -55,6 +55,10 @@ public class TagController {
         return tagService.findTags(user);
     }
 
+    @PutMapping("/api/tags/{id}")
+    public Tag updateTag(@RequestBody Tag tag, @PathVariable Long id) throws Exception {
+        return tagService.updateTag(tag,id);
+    }
 
 }
 

@@ -33,6 +33,12 @@ public class TagService {
         return tagRepository.save(tags);
 
     }
+    public Tag updateTag(Tag tags,Long id) throws Exception {
+        Tag tag = tagRepository.findById(id).orElseThrow(() -> new Exception());
+        tag.setName(tags.getName());
+        return tagRepository.save(tag);
+
+    }
 
     public Optional<Tag> findByTagId(Long id) {
         return tagRepository.findById(id);

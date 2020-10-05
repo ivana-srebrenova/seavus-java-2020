@@ -27,10 +27,8 @@ public class NoteService {
         this.tagRepository = tagRepository;
     }
 
-    public Note createNote(String title, String content) {
+    public Note createNote(String title, String content,List<Long> tagIds) {
         User user = securityService.getAuthenticatedUser();
-        List<Long> tagIds = new ArrayList();
-        tagIds.add(user.getId());
         List<Tag> tags = tagRepository.findAllById(tagIds).stream().filter(tag -> tag.getUser().equals(user)).collect(Collectors.toList());
         Note note = new Note(title, content, user,tags);
         return notesRepository.save(note);
@@ -39,14 +37,9 @@ public class NoteService {
 
 
     public Note updateNote(Note notes, Long id) throws Exception {
-        User user = securityService.getAuthenticatedUser();
-        List<Long> tagIds = new ArrayList();
-        tagIds.add(user.getId());
-        List<Tag> tags = tagRepository.findAllById(tagIds).stream().filter(tag -> tag.getUser().equals(user)).collect(Collectors.toList());
         Note note = notesRepository.findById(id).orElseThrow(() -> new Exception());
         note.setContent(notes.getContent());
         note.setTitle(notes.getTitle());
-        note.setTags(tags);
         return notesRepository.save(note);
     }
 

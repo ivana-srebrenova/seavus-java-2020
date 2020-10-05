@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,14 +27,15 @@ public class NoteController {
 
     @PostMapping("/api/notes")
     public Note createNote(@RequestBody CreateNotesRequest request) {
-        return noteService.createNote(request.title, request.content);
+        return noteService.createNote(request.title, request.content, request.tagIds);
     }
 
     public static class CreateNotesRequest {
         public String title;
         public String content;
-    }
+        public List<Long> tagIds=new ArrayList<>();
 
+    }
 
     @GetMapping("/api/notes/{id}")
     public Note findNote(@PathVariable Long id) {
@@ -56,7 +58,6 @@ public class NoteController {
         noteService.updateNote(note, id);
 
     }
-
 
     @GetMapping("/api/tags/{id}/notes")
     public List<Note> findNotesByTagId(@PathVariable Long id) {
