@@ -19,10 +19,10 @@ public class TagController {
     private SecurityService securityService;
     private NoteService noteService;
 
-    public TagController(TagService tagService, SecurityService securityService,NoteService noteService) {
+    public TagController(TagService tagService, SecurityService securityService, NoteService noteService) {
         this.tagService = tagService;
         this.securityService = securityService;
-        this.noteService=noteService;
+        this.noteService = noteService;
     }
 
     @PostMapping("/api/tags")
@@ -42,7 +42,6 @@ public class TagController {
         tagService.deleteTagById(id);
     }
 
-
     @GetMapping("/api/tags/{id}")
     public Optional<Tag> findTag(@PathVariable Long id) {
         return tagService.findByTagId(id);
@@ -57,7 +56,7 @@ public class TagController {
 
     @PutMapping("/api/tags/{id}")
     public Tag updateTag(@RequestBody Tag tag, @PathVariable Long id) throws Exception {
-        return tagService.updateTag(tag,id);
+        return tagService.updateTag(tag, id);
     }
 
 }

@@ -54,8 +54,8 @@ public class NoteController {
     }
 
     @PutMapping("/api/notes/{id}")
-    public void updateNote(@RequestBody Note note, @PathVariable Long id) throws Exception {
-        noteService.updateNote(note, id);
+    public void updateNote(@RequestBody CreateNotesRequest request,@PathVariable Long id) throws Exception {
+        noteService.updateNote(request.title, request.content, request.tagIds, id);
 
     }
 
